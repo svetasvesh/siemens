@@ -22,24 +22,21 @@ public class Gradient {
 			count++;
 			current = next;
 			next = f.getResult();
-			if (count % 10 == 0) {
-				System.out.println("Count = " + count);
-				System.out.println("Current = " + current);
-				System.out.println("Next = " + next);
-			}
 		}
-
+		f.printX();
+		System.out.println("Result = " + f.getResult());
 		return count;
-
-		//System.out.println("Count = " + count);
-
 	}
 
 
 	public static void main(String[] args) {
 		
-		//initial conditions		
-		MyFunction f = new MyFunction(10,10);
+		//initial conditions
+		final int size = 2;	
+		double[] initial = new double[size];
+		initial[0] = 10.0;
+		initial[1] = 10.0;	
+		MyFunction f = new MyFunction(size, initial);
 		
 		int count = compute(f);
 		System.out.println("Count = " + count);
