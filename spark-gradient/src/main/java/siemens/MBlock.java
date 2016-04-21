@@ -16,15 +16,15 @@ public class MBlock {
 		ystart = b;
 	}
 
-	public compute(int i, double istart, int j, double jstart) {
-		fill(i, istart, j, jstart);
+	public compute(int i, double istart, int j, double jstart, double lambda) {
+		fill(i, istart, j, jstart, lambda);
 	}
 
 	private double calcFunction(double x, double y) {
 		return (x+2)*(x+2) + y*y;
 	}
 
-	private void fill(int ix, double a, int jy, double b) {
+	private void fill(int ix, double a, int jy, double b, double lambda) {
 		for (int i = 0; i < nx; i++) {
 			for (int j = 0; j < ny; j++) {
 				z[i][j] = calcFunction(a + ix*lambda, b + jy*lambda);

@@ -51,7 +51,7 @@ public class GradientOnSpark{
 
 		blocks.foreach( newVoidFunction<Double, Double>() {
 			public void call (Double x, Double y) {
-				store[x][y].compute(x, x*xgrid*lambda, y, y*ygrid*lambda);
+				store[x][y].compute(x, x*xgrid*lambda, y, y*ygrid*lambda, lambda);
 			}
 		});
 
