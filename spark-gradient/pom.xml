@@ -34,7 +34,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>HelloWorld</mainClass>
+            <mainClass>GradientOnSpark</mainClass>
           </manifest>
         </archive>
       </configuration>
@@ -44,11 +44,11 @@
 
   <dependencies>
     <dependency> <!-- Spark dependency -->
-<groupId>org.apache.spark</groupId>
-<artifactId>spark-core_2.10</artifactId>
-<version>1.1.1</version>
-<scope>provided</scope>
-</dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.10</artifactId>
+      <version>1.5.0</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
