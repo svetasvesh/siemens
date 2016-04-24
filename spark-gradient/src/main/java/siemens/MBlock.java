@@ -5,18 +5,26 @@ import java.util.*;
 import java.io.Serializable;
 
 public class MBlock implements Serializable, Comparable<MBlock> {
-	//int n;
+	//nx, ny - размеры блока
 	int nx;
 	int ny;
+
+	//xstart, ystart - значения аргументов функции для первой ячейки блока
+	//значения аргументов остальных ячеек рассчитываются через величину lambda
 	double xstart;
 	double ystart;
+
+	//z - матрица, содержащая значения функции
 	double[][] z;
+
+	//lambda - величина шага
 	double lambda;
+	
 	double min;
 	double xmin, ymin;
 
+	//конструктор
 	public MBlock(int x, double a, int y, double b, double step) {
-		//n = count;
 		nx = x;
 		ny = y;
 		xstart = a;
@@ -25,21 +33,26 @@ public class MBlock implements Serializable, Comparable<MBlock> {
 		z = new double[nx][ny];
 	}
 
+	//сравнение объектов класса
 	public int compareTo(MBlock obj) {
 		if (this.min < obj.min) return -1;
 		else return 1;
 	} 
 
-	public MBlock compute(int x, int y) {
-		fill(x, y);
+	public MBlock compute() {
+		fill();
 		return this;
 	}
 
+	//вычисление функции
 	private double calcFunction(double x, double y) {
 		return (x+2)*(x+2) + y*y;
 	}
 
-	private void fill(int x, int y) {
+	//заполнение массива значениями функции и вычисление минимума
+	//с точки зрения организации кода - лучше делать это в 2х разных функциях
+	//с точки зрения быстродействия - оптимальней вычислить сразу в одном цикле
+	private void fill() {
 		for (int i = 0; i < nx; i++) {
 			for (int j = 0; j < ny; j++) {
 				double xx = xstart + i*lambda;
@@ -56,18 +69,5 @@ public class MBlock implements Serializable, Comparable<MBlock> {
 				}
 			}
 		}
-		System.out.println("i = " + x + " j = " + y + " Min = " + min + " x = " + xmin + " y = " + ymin);
-	}
-/*
-	public static Comparator<MBlock> myCompare() {
-		return new Comparator<MBlock> () {
-		public int compare (MBlock entry1, MBlock entry2) {
-			int result = entry1.compareTo(entry2);
-			return result;
-		}	
-	};
-}
-*/
-
-	
+	}	
 }
