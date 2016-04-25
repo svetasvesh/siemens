@@ -40,6 +40,9 @@ public class GradientOnSpark{
 		//x: [-10; 10]
 		//y[-10; 10]
 		//lambda = 0.01;
+
+		String output = "";
+		if (args.length > 0) output = args[0];
 		
 		System.out.println("Create matrix " + xcount + "*" + ycount + " elements and " + grid + "*" + grid + " blocks" );
 
@@ -80,13 +83,13 @@ public class GradientOnSpark{
 		//вывод результата
 		System.out.println("Min = " + result.min + " x = " + result.xmin + " y = " + result.ymin); 
 
-		write();
+		write(output);
 	}
 
 		
-	public static void write() {
+	public static void write(String output) {
 		//тестовый вывод в файл
-		File file = new File("output.txt");
+		File file = new File(output + "output.txt");
 		try {
 	        //проверяем, что если файл не существует то создаем его
 	        if(!file.exists()){
@@ -98,7 +101,7 @@ public class GradientOnSpark{
 	        System.out.println("FilePath: " + file.getAbsolutePath() );
 	 
 	        try {
-	            //Записываем текст у файл
+	            //Записываем текст в файл
 	            out.println("Create matrix " + xcount + "*" + ycount + " elements and " + grid + "*" + grid + " blocks");
 	            out.println("Each block contain matrix " + xgrid + "*" + ygrid);
 	            out.println("Min = " + minvalue + " x = " + imin + " y = " + jmin);

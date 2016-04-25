@@ -1,0 +1,3 @@
+Create matrix 2000*2000 elements and 10*10 blocks
+Each block contain matrix 200*200
+Min = 0.0 x = -2.0 y = 0.0
